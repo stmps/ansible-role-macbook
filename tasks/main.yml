@@ -1,4 +1,10 @@
 ---
+- name: set scroll direction "not natural"   # a misnomer
+  osx_defaults:
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: true
+
 - name: finder show all filename extensions
   osx_defaults:
     key: AppleShowAllExtensions
