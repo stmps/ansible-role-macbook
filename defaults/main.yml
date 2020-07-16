@@ -1,0 +1,15 @@
+---
+homebrew_pkgs:
+  - wget
+  - curl
+  - watch
+  - screen
+
+homebrew_casks:
+  - docker
+  - iterm2
+  - firefox
+  - spectacle
+  - libreoffice
+  - tunnelblick
+  - vlc

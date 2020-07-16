@@ -1,0 +1,87 @@
+---
+- name: finder show all filename extensions
+  osx_defaults:
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+
+- name: finder show path bar
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+
+- name: finder disable the warning when changing a file extension
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    type: bool
+    value: false
+
+- name: avoid creating .DS_Store files on network or USB volumes
+  osx_defaults:
+    domain: com.apple.desktopservices
+    key: "{{ item }}"
+    type: bool
+    value: false
+  loop:
+    - DSDontWriteNetworkStores
+    - DSDontWriteUSBStores
+
+- name: use "list" view in all finder windows by default
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    value: Nlsv
+
+- name: prevent Time Machine from prompting to use new hard drives as backup volume
+  osx_defaults:
+    domain: com.apple.TimeMachine
+    key: DoNotOfferNewDisksForBackup
+    type: bool
+    value: true
+
+- name: enable dark mode theme
+  osx_defaults:
+    key: AppleInterfaceStyle
+    value: Dark
+
+- name: don’t show recent applications in Dock
+  osx_defaults:
+    domain: com.apple.dock
+    key: show-recents
+    type: bool
+    value: false
+
+- name: disable mouse (not touchpad) acceleration
+  osx_defaults:
+    key: com.apple.mouse.scaling
+    value: -1
+
+- name: disable smart quotes
+  osx_defaults:
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: bool
+    value: false
+
+- name: install homebrew packages
+  homebrew:
+    name: "{{ item }}"
+  loop:
+    - wget
+    - curl
+    - watch
+    - screen
+
+- name: install homebrew cask packages
+  homebrew_cask:
+    name: "{{ item }}"
+  loop:
+    - docker
+    - iterm2
+    - firefox
+    - spectacle
+    - libreoffice
+    - tunnelblick
+    - vlc
