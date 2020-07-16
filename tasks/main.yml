@@ -3,7 +3,7 @@
   osx_defaults:
     key: com.apple.swipescrolldirection
     type: bool
-    value: true
+    value: false
 
 - name: finder show all filename extensions
   osx_defaults:
@@ -71,18 +71,20 @@
     type: bool
     value: false
 
-- name: install homebrew packages
+- name: install and upgrade homebrew packages
   homebrew:
     name: "{{ item }}"
+    upgrade_all: yes
   loop:
     - wget
     - curl
     - watch
     - screen
 
-- name: install homebrew cask packages
+- name: install and upgrade homebrew cask packages
   homebrew_cask:
     name: "{{ item }}"
+    upgrade_all: yes
   loop:
     - docker
     - iterm2
