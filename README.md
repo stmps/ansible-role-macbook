@@ -40,7 +40,7 @@ Playbook:
 
 Run the playbook:
 
-   ansible-playbook -i inventory site.yml 
+    ansible-playbook -i inventory site.yml
 
 You will need to reboot after running this playbook because OSX Defaults are cached.
 
