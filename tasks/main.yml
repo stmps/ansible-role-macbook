@@ -5,6 +5,12 @@
     type: bool
     value: false
 
+- name: disable font smoothing
+  osx_defaults:
+    key: AppleFontSmoothing
+    type: int
+    value: 0
+
 - name: finder show all filename extensions
   osx_defaults:
     key: AppleShowAllExtensions
@@ -75,21 +81,10 @@
   homebrew:
     name: "{{ item }}"
     upgrade_all: yes
-  loop:
-    - wget
-    - curl
-    - watch
-    - screen
+  loop: "{{ homebrew_pkgs }}"
 
 - name: install and upgrade homebrew cask packages
   homebrew_cask:
     name: "{{ item }}"
     upgrade_all: yes
-  loop:
-    - docker
-    - iterm2
-    - firefox
-    - spectacle
-    - libreoffice
-    - tunnelblick
-    - vlc
+  loop: "{{ homebrew_casks }}"
