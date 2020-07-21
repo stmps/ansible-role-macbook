@@ -4,6 +4,8 @@ homebrew_pkgs:
   - curl
   - watch
   - screen
+  - tig
+  - pwgen
 
 homebrew_casks:
   - docker
@@ -13,3 +15,4 @@ homebrew_casks:
   - libreoffice
   - tunnelblick
   - vlc
+  - virtualbox
