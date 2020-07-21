@@ -1,21 +1,22 @@
 ansible-role-macbook
 =========
 
-An Ansible role for setting some Mac OS preferences. For example:
+Ansible roles for MacOS to set some preferences and install packages. For example:
 
- - showing filename extensions
- - enabling Dark theme
- - disabling `.DS_Store` file creation on network shares
+ - show filename extensions
+ - enable Dark theme
+ - disable `.DS_Store` file creation on network shares
+ - install packages like `wget`, `screen` and `vlc`
 
 Requirements
 ------------
 
- - [Homebrew package manager](https://brew.sh/)
+ - [Homebrew package manager](https://brew.sh/) (for the `macbook-pkgs` role)
 
 Role Variables
 --------------
 
-Set your required Homebrew packages and casks in `defaults/main.yml`.
+Set your required Homebrew packages and casks in `roles/macbook-pkgs/defaults/main.yml`.
 
 Dependencies
 ------------
@@ -31,9 +32,11 @@ Inventory file:
 
 Playbook:
 
-    - hosts: localhost 
+    ---
+    - hosts: localhost
       roles:
-         - ansible-role-macbook
+        - macbook-prefs
+        - macbook-pkgs
 
 Run the playbook:
 
