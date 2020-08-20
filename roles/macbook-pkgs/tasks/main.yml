@@ -1,12 +1,3 @@
 ---
-- name: install and upgrade homebrew packages
-  homebrew:
-    name: "{{ item }}"
-    upgrade_all: yes
-  loop: "{{ homebrew_pkgs }}"
-
-- name: install and upgrade homebrew cask packages
-  homebrew_cask:
-    name: "{{ item }}"
-    upgrade_all: yes
-  loop: "{{ homebrew_casks }}"
+- include: homebrew.yml
+  become: false  # make sure we don't sudo homebrew for safety

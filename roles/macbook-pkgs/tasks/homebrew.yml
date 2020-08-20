@@ -1,0 +1,12 @@
+---
+- name: install and upgrade homebrew packages
+  homebrew:
+    name: "{{ item }}"
+    upgrade_all: yes
+  loop: "{{ homebrew_pkgs }}"
+
+- name: install and upgrade homebrew cask packages
+  homebrew_cask:
+    name: "{{ item }}"
+    upgrade_all: yes
+  loop: "{{ homebrew_casks }}"

@@ -1,7 +1,7 @@
 ansible-role-macbook
 =========
 
-Ansible roles for MacOS to set some preferences and install packages. For example:
+Ansible roles for macOS to set some preferences and install packages. For example:
 
  - show filename extensions
  - enable Dark theme
@@ -17,6 +17,7 @@ Role Variables
 --------------
 
 Set your required Homebrew packages and casks in `roles/macbook-pkgs/defaults/main.yml`.
+Set your preferences in `roles/macbook-prefs/defaults/main.yml`.
 
 Dependencies
 ------------
@@ -37,12 +38,13 @@ Playbook:
       roles:
         - macbook-prefs
         - macbook-pkgs
+      become: true
 
 Run the playbook:
 
-    ansible-playbook -i inventory site.yml
+    ansible-playbook site.yml
 
-You will need to reboot after running this playbook because OSX Defaults are cached.
+You will need to reboot after running this playbook because macOS defaults are cached.
 
 License
 -------
