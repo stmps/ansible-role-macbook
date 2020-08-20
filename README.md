@@ -33,7 +33,7 @@ Playbook: Refer to `site.yml`.
 
 Run the playbook:
 
-    ansible-playbook site.yml
+    ansible-playbook -K site.yml
 
 You will need to reboot after running this playbook because macOS defaults are cached.
 
