@@ -27,18 +27,9 @@ None.
 Example Playbook
 ----------------
 
-Inventory file:
-    
-    localhost ansible_connection=local
+Inventory file: Refer to `inventory`.
 
-Playbook:
-
-    ---
-    - hosts: localhost
-      roles:
-        - macbook-prefs
-        - macbook-pkgs
-      become: true
+Playbook: Refer to `site.yml`.
 
 Run the playbook:
 
