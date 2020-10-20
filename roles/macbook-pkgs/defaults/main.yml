@@ -6,6 +6,9 @@ homebrew_pkgs:
   - screen
   - tig
   - pwgen
+  - tree
+  - nmap
+  - coreutils
 
 homebrew_casks:
   - docker
@@ -16,3 +19,6 @@ homebrew_casks:
   - tunnelblick
   - vlc
   - virtualbox
+  - visual-studio-code
+  - blue-jeans
+  - parsec
