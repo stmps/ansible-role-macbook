@@ -22,3 +22,5 @@ homebrew_casks:
   - visual-studio-code
   - blue-jeans
   - parsec
+  - joplin
+  - adobe-acrobat-reader
