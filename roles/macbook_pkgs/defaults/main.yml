@@ -24,3 +24,5 @@ homebrew_casks:
   - parsec
   - joplin
   - adobe-acrobat-reader
+  - asciidoctor
+  - pandoc
