@@ -9,6 +9,8 @@ homebrew_pkgs:
   - tree
   - nmap
   - coreutils
+  - asciidoctor
+  - pandoc
 
 homebrew_casks:
   - docker
@@ -24,5 +26,3 @@ homebrew_casks:
   - parsec
   - joplin
   - adobe-acrobat-reader
-  - asciidoctor
-  - pandoc
