@@ -1,38 +1,38 @@
 ---
 - name: set scroll direction "not natural"   # a misnomer
-  osx_defaults:
+  community.general.osx_defaults:
     key: com.apple.swipescrolldirection
     type: bool
     value: false
 
 - name: disable font smoothing
-  osx_defaults:
+  community.general.osx_defaults:
     key: AppleFontSmoothing
     type: int
     value: 0
 
 - name: finder show all filename extensions
-  osx_defaults:
+  community.general.osx_defaults:
     key: AppleShowAllExtensions
     type: bool
     value: true
 
 - name: finder show path bar
-  osx_defaults:
+  community.general.osx_defaults:
     domain: com.apple.finder
     key: ShowPathbar
     type: bool
     value: true
 
 - name: finder disable the warning when changing a file extension
-  osx_defaults:
+  community.general.osx_defaults:
     domain: com.apple.finder
     key: FXEnableExtensionChangeWarning
     type: bool
     value: false
 
 - name: avoid creating .DS_Store files on network or USB volumes
-  osx_defaults:
+  community.general.osx_defaults:
     domain: com.apple.desktopservices
     key: "{{ item }}"
     type: bool
@@ -42,44 +42,92 @@
     - DSDontWriteUSBStores
 
 - name: use "list" view in all finder windows by default
-  osx_defaults:
+  community.general.osx_defaults:
     domain: com.apple.finder
     key: FXPreferredViewStyle
     value: Nlsv
 
 - name: prevent Time Machine from prompting to use new hard drives as backup volume
-  osx_defaults:
+  community.general.osx_defaults:
     domain: com.apple.TimeMachine
     key: DoNotOfferNewDisksForBackup
     type: bool
     value: true
 
 - name: enable dark mode theme
-  osx_defaults:
+  community.general.osx_defaults:
     key: AppleInterfaceStyle
     value: Dark
 
 - name: don’t show recent applications in Dock
-  osx_defaults:
+  community.general.osx_defaults:
     domain: com.apple.dock
     key: show-recents
     type: bool
     value: false
 
 - name: disable mouse (not touchpad) acceleration
-  osx_defaults:
+  community.general.osx_defaults:
     key: com.apple.mouse.scaling
     value: -1
 
 - name: disable smart quotes
-  osx_defaults:
+  community.general.osx_defaults:
     key: NSAutomaticQuoteSubstitutionEnabled
     type: bool
     value: false
 
 - name: set contact details on login screen
-  osx_defaults:
+  community.general.osx_defaults:
     domain: '/Library/Preferences/com.apple.loginwindow'
     key: LoginwindowText
     value: "If found, please contact: {{ contact }}"
   when: contact is defined
+
+- name: print logout message
+  ansible.builtin.debug:
+    msg: "MacOS caches defaults. You may need to logout and login to apply the changes."
+
+- name: set dock icon size
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    value: 84
+
+- name: automatically empty the trash
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXRemoveOldTrashItems
+    type: bool
+    value: true
+
+# Possible values: `WhenScrolling`, `Automatic` and `Always`
+- name: always show scrollbars
+  community.general.osx_defaults:
+    key: AppleShowScrollBars
+    value: Always
+
+- name: automatically quit printer app once the print jobs complete
+  community.general.osx_defaults:
+    domain: com.apple.print.PrintingPrefs
+    key: Quit When Finished
+    type: bool
+    value: true
+
+- name: show system info when clicking the clock on the login window
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.loginwindow
+    key: AdminHostInfo
+    value: HostName
+
+- name: copy wallpaper file
+  ansible.builtin.copy:
+    src: '{{ wallpaper_file }}'
+    dest: '~/Pictures/{{ wallpaper_file }}'
+    backup: true
+  when: wallpaper_file is defined
+  become: false
+  register: wallpaper
+  notify: set wallpaper
+
+# TODO how to map caps lock to escape?
