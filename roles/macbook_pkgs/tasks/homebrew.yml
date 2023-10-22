@@ -1,8 +1,11 @@
 ---
 - name: install homebrew packages
-  homebrew:
+  community.general.homebrew:
     name: "{{ homebrew_pkgs }}"
+  when: homebrew_pkgs is defined 
 
 - name: install homebrew casks
-  homebrew_cask:
+  community.general.homebrew_cask:
     name: "{{ homebrew_casks }}"
+    accept_external_apps: true
+  when: homebrew_casks is defined 

@@ -1,28 +1,29 @@
 ---
 homebrew_pkgs:
   - wget
+  - jq
   - curl
   - watch
-  - screen
   - tig
+  - tmux
   - pwgen
   - tree
   - nmap
   - coreutils
   - asciidoctor
   - pandoc
+  - podman
 
 homebrew_casks:
-  - docker
   - iterm2
   - firefox
-  - spectacle
-  - libreoffice
-  - tunnelblick
   - vlc
-  - virtualbox
   - visual-studio-code
-  - blue-jeans
-  - parsec
   - joplin
-  - adobe-acrobat-reader
+  - moonlight
+  - microsoft-teams
+  - zoom
+  - telegram
+  - signal
+  - wireshark
+  - sweet-home3d
